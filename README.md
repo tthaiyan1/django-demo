@@ -1,6 +1,6 @@
 # django-demo
 This is a show case project by using Django + MySQL +AWS technology
-It is a page to list some courses provided by an university. 
+It is a page to list some courses provided by an university. Data is stored in a table in MySQL database. 
 
 The whole website is developed by using Python Django framework. 
 
