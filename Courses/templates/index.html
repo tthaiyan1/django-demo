@@ -1,0 +1,82 @@
+{% load render_table from django_tables2 %}
+{% load querystring from django_tables2 %}
+{% load bootstrap3 %}
+<!doctype html>
+<html>
+    <head>
+        <a href="board/"><title>Django table example</title></a>
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css"/>
+        <style>
+           body {background-color: whitesmoke;}
+  #Table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+#Table td, #Table th {
+  border: 2px solid #ddd;
+  padding: 10px;
+  text-align: center;
+
+}
+
+#Table tr:nth-child(even){background-color: #f2f2f2;}
+
+#Table tr:hover {background-color: #ddd;}
+
+#Table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #04AA6D;
+  color: white;
+}
+        </style>
+    <script type="text/javascript" src="/static/js/jquery-1.11.0.js"></script>
+</head>
+    <body>
+    <div id="Top" style="background:#38c">
+        <a href="/home" id="acrn_title">&nbsp;Django-University Course Data Demo -- Haiyan Liang</a>
+    </div>
+    <div id="Center">
+        <div id="Center_Searcher">
+            <form action="/search" method="get">
+            <table class="center_table">
+                <tr><td colspan="5"><h3>Search by Course Title</h3></td></tr>
+                <tr>
+                    <td>Keyword:</td>
+                    <td align="center">&nbsp;&nbsp;<input name="keywd_input" value="{{ keywd_input }}"></td>
+                    <td align="center">&nbsp;&nbsp;<input type="submit" value="search"></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div id="Center_Filter">
+            <form action="/filter" method="get">
+            <table class="center_table">
+                <tr><td colspan="5"><h3>Filter</h3></td></tr>
+                <tr>
+                    <td>Term:</td>
+                    <td>&nbsp;&nbsp;<select name="filter_category">
+                        {% for i in category_list %}
+                          <option value="{{i}}" {% if i == filter_category %} selected{% endif %}>{{i}}</option>
+                        {% endfor %}
+                    </select></td>
+                    <td><input type="submit" value="Filter"></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+    <div id="Table">
+        <h3>&nbsp;Courses table</h3>
+        <form action="/download_excel" method="get">
+            &nbsp;&nbsp;<a href="/download_excel">Download to excel</a>
+        </form><br>
+            {% render_table table %}
+    </div>
+    </div>
+    </body>
+</html>
