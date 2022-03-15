@@ -12,7 +12,7 @@ from djqscsv import render_to_csv_response
 
 
 
-db = MySQLdb.connect("aa1ezfu5tndpdx3.co3gbpiwt2rt.us-west-2.rds.amazonaws.com", "tthaiyan", "tthaiyan123;", "University", charset='utf8')
+db = MySQLdb.connect("aa1ezfu5tndpdx3.co3gbpiwt2rt.us-west-2.rds.amazonaws.com", "tthaiyan", "XXXXX", "University", charset='utf8')
 cursor = db.cursor()
 
 category_list = ['All','19/FA','20/FA','21/FA']
